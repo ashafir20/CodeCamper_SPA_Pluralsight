@@ -3,12 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeCamper", "CodeCamper\CodeCamper.csproj", "{6F2654BC-6CFA-4349-A1E9-B5C966A31A90}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeCamper.Web", "CodeCamper.Web\CodeCamper.Web.csproj", "{6F2654BC-6CFA-4349-A1E9-B5C966A31A90}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{DEDBB8DA-6228-495A-BBB5-9085AF147F5C}"
 	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeCamper.Data", "CodeCamper.Data\CodeCamper.Data.csproj", "{479D6C75-A5AF-4281-866B-1484506E35E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeCamper.Model", "CodeCamper.Model\CodeCamper.Model.csproj", "{777D72BF-E37D-48C8-87AF-6AF4F4D022ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +27,14 @@ Global
 		{6F2654BC-6CFA-4349-A1E9-B5C966A31A90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F2654BC-6CFA-4349-A1E9-B5C966A31A90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F2654BC-6CFA-4349-A1E9-B5C966A31A90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{479D6C75-A5AF-4281-866B-1484506E35E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{479D6C75-A5AF-4281-866B-1484506E35E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{479D6C75-A5AF-4281-866B-1484506E35E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{479D6C75-A5AF-4281-866B-1484506E35E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{777D72BF-E37D-48C8-87AF-6AF4F4D022ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{777D72BF-E37D-48C8-87AF-6AF4F4D022ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{777D72BF-E37D-48C8-87AF-6AF4F4D022ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{777D72BF-E37D-48C8-87AF-6AF4F4D022ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
