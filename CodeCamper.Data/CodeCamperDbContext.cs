@@ -9,10 +9,7 @@ namespace CodeCamper.Data
     public class CodeCamperDbContext : DbContext
     {
         public CodeCamperDbContext()
-            : base(nameOrConnectionString: "CodeCamper")
-        {
-            Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
-        }
+            : base(nameOrConnectionString: "CodeCamper") { }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
