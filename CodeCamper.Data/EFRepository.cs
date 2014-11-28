@@ -1,38 +1,81 @@
-﻿using System.Linq;
+﻿using System;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Linq;
 using CodeCamper.Contracts;
 
 namespace CodeCamper.Data
 {
     public class EFRepository<T> : IRepository<T> where T : class
     {
-        public IQueryable<T> GetAll()
+
+        public EFRepository(DbContext dbContext)
         {
-            throw new System.NotImplementedException();
+            if (dbContext == null)
+            {
+                throw new ArgumentNullException("dbContext");
+            }
+
+            DbContext = dbContext;
+            DbSet = DbContext.Set<T>();
         }
 
-        public T GetById(int id)
+        protected DbContext DbContext { get; set; }
+        protected DbSet<T> DbSet { get; set; }
+
+        public virtual IQueryable<T> GetAll()
         {
-            throw new System.NotImplementedException();
+            return DbSet;
         }
 
-        public void Add(T entity)
+        public virtual T GetById(int id)
         {
-            throw new System.NotImplementedException();
+            return DbSet.Find(id);
         }
 
-        public void Update(T entity)
+        public virtual void Add(T entity)
         {
-            throw new System.NotImplementedException();
+            DbEntityEntry dbEntityEntry = DbContext.Entry(entity);
+            if (dbEntityEntry.State != EntityState.Detached)
+            {
+                dbEntityEntry.State = EntityState.Added;
+            }
+            else
+            {
+                DbSet.Add(entity);
+            }
         }
 
-        public void Delete(T entity)
+        public virtual void Update(T entity)
         {
-            throw new System.NotImplementedException();
+            DbEntityEntry dbEntityEntry = DbContext.Entry(entity);
+            if (dbEntityEntry.State == EntityState.Detached)
+            {
+                DbSet.Attach(entity);
+            }
+
+            dbEntityEntry.State = EntityState.Modified;
         }
 
-        public void Delete(int id)
+        public virtual void Delete(T entity)
         {
-            throw new System.NotImplementedException();
+            DbEntityEntry dbEntityEntry = DbContext.Entry(entity);
+            if (dbEntityEntry.State != EntityState.Deleted)
+            {
+                dbEntityEntry.State = EntityState.Deleted;
+            }
+            else
+            {
+                DbSet.Attach(entity);
+                DbSet.Remove(entity);
+            }
+        }
+
+        public virtual void Delete(int id)
+        {
+            var entity = GetById(id);
+            if (entity == null) return;
+            Delete(entity);
         }
     }
 }

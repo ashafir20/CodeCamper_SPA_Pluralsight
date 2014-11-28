@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
+﻿using System.Data.Entity;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -19,6 +15,8 @@ namespace CodeCamper
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
+
+            HibernatingRhinos.Profiler.Appender.EntityFramework.EntityFrameworkProfiler.Initialize();
 
             Database.SetInitializer(new CodeCamperDatabaseInitializer());
 
