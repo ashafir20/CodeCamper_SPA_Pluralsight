@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using CodeCamper.Data.Configuration;
 using CodeCamper.Model;
@@ -7,14 +8,11 @@ namespace CodeCamper.Data
 {
     public class CodeCamperDbContext : DbContext
     {
-        // ToDo: Move Initializer to Global.asax; don't want dependence on SampleData
-        static CodeCamperDbContext()
-        {
-            Database.SetInitializer(new CodeCamperDatabaseInitializer());
-        }
-
         public CodeCamperDbContext()
-            : base(nameOrConnectionString: "CodeCamper") { }
+            : base(nameOrConnectionString: "CodeCamper")
+        {
+            Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

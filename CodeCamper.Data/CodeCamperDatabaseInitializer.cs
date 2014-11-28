@@ -4,14 +4,14 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using CodeCamper.Data.SampleData;
-using CodeCamper.Data.SampleData.CodeCamper.Data.SampleData;
 using CodeCamper.Model;
 
 namespace CodeCamper.Data
 {
     public class CodeCamperDatabaseInitializer :
         //CreateDatabaseIfNotExists<CodeCamperDbContext>      // when model is stable
-        DropCreateDatabaseIfModelChanges<CodeCamperDbContext> // when iterating
+        //DropCreateDatabaseIfModelChanges<CodeCamperDbContext> // when iterating
+        DropCreateDatabaseAlways<CodeCamperDbContext>
     {
         private const int AttendeeCount = 1000;
 
@@ -330,8 +330,7 @@ namespace CodeCamper.Data
             //var slotAndSessionIds = GetSlotAndSessionIds(sessions);
             //var numberOfAttendedSessions = Math.Min(slotAndSessionIds.Count(), 8);
 
-            var sids = TheChosen.ChoosenAttendeeSessions
-                .Select(s => s.Id).ToList();
+            var sids = TheChosen.ChoosenAttendeeSessions.Select(s => s.Id).ToList();
 
             foreach (var person in attendees)
             {
