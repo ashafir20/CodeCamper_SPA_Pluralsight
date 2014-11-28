@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
+using CodeCamper.Data.SampleData;
+using CodeCamper.Data.SampleData.CodeCamper.Data.SampleData;
 using CodeCamper.Model;
 
 namespace CodeCamper.Data
