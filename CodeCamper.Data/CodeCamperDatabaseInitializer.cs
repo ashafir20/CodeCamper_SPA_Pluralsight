@@ -9,9 +9,9 @@ using CodeCamper.Model;
 
 namespace CodeCamper.Data
 {
-    public class CodeCamperDatabaseInitializer : DropCreateDatabaseAlways<CodeCamperDbContext>
+    public class CodeCamperDatabaseInitializer : //DropCreateDatabaseAlways<CodeCamperDbContext>
         //CreateDatabaseIfNotExists<CodeCamperDbContext>      // when model is stable
-        //DropCreateDatabaseIfModelChanges<CodeCamperDbContext> // when iterating
+        DropCreateDatabaseIfModelChanges<CodeCamperDbContext> // when iterating
     {
         private const int AttendeeCount = 1000;
 

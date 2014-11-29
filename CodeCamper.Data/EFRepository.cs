@@ -60,7 +60,7 @@ namespace CodeCamper.Data
         public virtual void Delete(T entity)
         {
             DbEntityEntry dbEntityEntry = DbContext.Entry(entity);
-            if (dbEntityEntry.State != EntityState.Deleted)
+            if (dbEntityEntry.State != EntityState.Detached)
             {
                 dbEntityEntry.State = EntityState.Deleted;
             }
