@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using CodeCamper.Data.SampleData;
@@ -8,10 +9,9 @@ using CodeCamper.Model;
 
 namespace CodeCamper.Data
 {
-    public class CodeCamperDatabaseInitializer :
+    public class CodeCamperDatabaseInitializer : DropCreateDatabaseAlways<CodeCamperDbContext>
         //CreateDatabaseIfNotExists<CodeCamperDbContext>      // when model is stable
         //DropCreateDatabaseIfModelChanges<CodeCamperDbContext> // when iterating
-        DropCreateDatabaseAlways<CodeCamperDbContext>
     {
         private const int AttendeeCount = 1000;
 
@@ -23,6 +23,8 @@ namespace CodeCamper.Data
 
         protected override void Seed(CodeCamperDbContext context)
         {
+            //if (Debugger.IsAttached == false) Debugger.Launch();
+
             // Seed code here
             var rooms = AddRooms(context);
             var tracks = AddTracks(context);

@@ -16,6 +16,9 @@ namespace CodeCamper
         {
             AreaRegistration.RegisterAllAreas();
 
+            // Tell WebApi to use our custom Ioc (Ninject)
+            IocConfig.RegisterIoc(GlobalConfiguration.Configuration);  
+
             HibernatingRhinos.Profiler.Appender.EntityFramework.EntityFrameworkProfiler.Initialize();
 
             Database.SetInitializer(new CodeCamperDatabaseInitializer());
@@ -24,6 +27,8 @@ namespace CodeCamper
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            GlobalConfig.CustomizeConfig(GlobalConfiguration.Configuration);
         }
     }
 }
